@@ -1,0 +1,1 @@
+This is a dynamic Stock Scraper to scrape Title, Stock Status and Price. Product URLs can be defined in products_to_scrape.json and the site must have a relevent websites_config.json config where you define the BeautifulSoup HTML tags for product_name, stock_status and price. 
