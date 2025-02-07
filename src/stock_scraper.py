@@ -1,13 +1,21 @@
-import requests
+import os
 import json
+import requests
 from bs4 import BeautifulSoup
 
+# Get the absolute path of the script
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the correct file paths
+CONFIG_FILE_PATH = os.path.join(BASE_DIR, "websites_config.json")
+PRODUCTS_FILE_PATH = os.path.join(BASE_DIR, "products_to_scrape.json")
+
 # Load website configurations from JSON file
-with open("websites_config.json", "r") as config_file:
+with open(CONFIG_FILE_PATH, "r") as config_file:
     WEBSITES_CONFIG = json.load(config_file)
 
 # Load product URLs to scrape from JSON file
-with open("products_to_scrape.json", "r") as product_file:
+with open(PRODUCTS_FILE_PATH, "r") as product_file:
     PRODUCTS_TO_SCRAPE = json.load(product_file)
 
 # Fake headers to bypass bot detection
