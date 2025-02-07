@@ -6,7 +6,7 @@ def get_public_ip():
         response = requests.get(url, timeout=5)
         response.raise_for_status()  # Raise an error for bad responses (4xx and 5xx)
         data = response.json()
-        print(f"Your Public IP: {data['ip']}")
+        print(f"Your Public IP: {data['ip']} ({data['asn_org']})")
     except requests.exceptions.RequestException as e:
         print(f"Error fetching IP: {e}")
 
