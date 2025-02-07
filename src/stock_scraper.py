@@ -20,7 +20,7 @@ def extract_value(soup, strategy, stock_mappings=None):
     """Extracts a value from the soup based on the given strategy."""
     if strategy["type"] == "meta":
         tag = soup.find("meta", {"property": strategy["property"]})
-        return tag["content"] if tag else "Unknown"
+        return tag["content"].strip() if tag else "Unknown"
 
     elif strategy["type"] == "selector":
         tag = soup.select_one(strategy["selector"])
@@ -28,7 +28,7 @@ def extract_value(soup, strategy, stock_mappings=None):
 
     elif strategy["type"] == "attribute":
         tag = soup.select_one(strategy["selector"])
-        return tag.get(strategy["attribute"], "Unknown") if tag else "Unknown"
+        return tag.get(strategy["attribute"], "Unknown").strip() if tag else "Unknown"
 
     elif strategy["type"] == "text":
         tag = soup.select_one(strategy["selector"])

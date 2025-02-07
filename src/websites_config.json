@@ -18,6 +18,14 @@
             "product-stock-level--low": "Low Stock",
             "product-stock-level--high": "High Stock"
         }
+    },
+    "awd-it": {
+        "product_name": { "type": "meta", "property": "og:title" },
+        "stock_status": { "type": "meta", "property": "product:availability"},
+        "price": { "type": "meta", "property": "product:price:amount" },
+        "stock_mappings": {
+            "out of stock": "Out of Stock",
+            "in stock": "In Stock"
+        }
     }
 }
-
