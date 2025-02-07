@@ -1,18 +1,37 @@
 {
     "overclockers": {
-        "product_name": { "type": "meta", "property": "og:title" },
-        "stock_status": { "type": "attribute", "selector": "span.availability-text", "attribute": "data-qa" },
-        "price": { "type": "meta", "property": "product:price:amount" },
+        "product_name": {
+            "type": "meta",
+            "property": "og:title"
+        },
+        "stock_status": {
+            "type": "attribute",
+            "selector": "span.availability-text",
+            "attribute": "data-qa"
+        },
+        "price": {
+            "type": "meta",
+            "property": "product:price:amount"
+        },
         "stock_mappings": {
             "availability_status_available": "In Stock",
             "availability_status_preorder": "Pre Order",
-            "availability_status_outofstock": "Out of Stock"
+            "availability_status_out_of_stock": "Out of Stock"
         }
     },
     "computerorbit": {
-        "product_name": { "type": "selector", "selector": "h1.product-title" },
-        "stock_status": { "type": "class", "selector": "span.product-stock-level" },
-        "price": { "type": "text", "selector": "span.money" },
+        "product_name": {
+            "type": "selector",
+            "selector": "h1.product-title"
+        },
+        "stock_status": {
+            "type": "class",
+            "selector": "span.product-stock-level"
+        },
+        "price": {
+            "type": "text",
+            "selector": "span.money"
+        },
         "stock_mappings": {
             "product-stock-level--none": "Out of Stock",
             "product-stock-level--low": "Low Stock",
@@ -20,9 +39,18 @@
         }
     },
     "awd-it": {
-        "product_name": { "type": "meta", "property": "og:title" },
-        "stock_status": { "type": "meta", "property": "product:availability"},
-        "price": { "type": "meta", "property": "product:price:amount" },
+        "product_name": {
+            "type": "meta",
+            "property": "og:title"
+        },
+        "stock_status": {
+            "type": "meta",
+            "property": "product:availability"
+        },
+        "price": {
+            "type": "meta",
+            "property": "product:price:amount"
+        },
         "stock_mappings": {
             "out of stock": "Out of Stock",
             "in stock": "In Stock"

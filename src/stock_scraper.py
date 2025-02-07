@@ -25,22 +25,24 @@ HEADERS = {
 
 # Function to extract values dynamically
 def extract_value(soup, strategy, stock_mappings=None):
-    """Extracts a value from the soup based on the given strategy."""
+    """Extracts a value from the soup based on the given strategy and maps stock status correctly."""
+    value = "Unknown"
+
     if strategy["type"] == "meta":
         tag = soup.find("meta", {"property": strategy["property"]})
-        return tag["content"].strip() if tag else "Unknown"
+        value = tag["content"].strip() if tag else "Unknown"
 
     elif strategy["type"] == "selector":
         tag = soup.select_one(strategy["selector"])
-        return tag.text.strip() if tag else "Unknown"
+        value = tag.text.strip() if tag else "Unknown"
 
     elif strategy["type"] == "attribute":
         tag = soup.select_one(strategy["selector"])
-        return tag.get(strategy["attribute"], "Unknown").strip() if tag else "Unknown"
+        value = tag.get(strategy["attribute"], "Unknown").strip() if tag else "Unknown"
 
     elif strategy["type"] == "text":
         tag = soup.select_one(strategy["selector"])
-        return tag.text.strip() if tag else "Unknown"
+        value = tag.text.strip() if tag else "Unknown"
 
     elif strategy["type"] == "class":
         tag = soup.select_one(strategy["selector"])
@@ -49,10 +51,14 @@ def extract_value(soup, strategy, stock_mappings=None):
             for cls in class_list:
                 if cls in stock_mappings:
                     return stock_mappings[cls]
-            return "Unknown"
+            value = "Unknown"
 
-    return "Unknown"
-
+    # Map stock status using stock_mappings if applicable
+    if stock_mappings and value in stock_mappings:
+        return stock_mappings[value]
+    
+    return value
+    
 # List to store results
 products_data = []
 
